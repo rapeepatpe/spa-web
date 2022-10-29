@@ -1,5 +1,15 @@
 <?php
-echo '
+ $conn = mysqli_connect('localhost', 'dbadmin','admin','mywebsite');
+ if($conn){
+    echo 'Connection errors :'.mysqli_connect_error();
+ }
+ $sql = 'SELECT std_id, std_name , std_pic FROM student';
+ $result = mysqli_query($conn, $sql);
+ $students = mysqli_fetch_all($result, MYSQLI_ASSOC);
+ mysqli_free_result($result);
+ mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -402,7 +412,5 @@ echo '
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
-</html>
+</html> 
 
-';
-?>
